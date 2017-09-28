@@ -17,11 +17,13 @@ public class Notebook_btn : MonoBehaviour {
 
 		if (SetNotebook == false) {
 			notebook_anim.Play ("notebook_in");
-			background_notebook.position = new Vector2 (288, 512);
+
 			SetNotebook = true;
 		} else {
 			notebook_anim.Play ("notebook_out");
+			Destroy (libreta,0.25f);
 			Destroy (gameObject);
+
 			SetNotebook = false;
 
 		}

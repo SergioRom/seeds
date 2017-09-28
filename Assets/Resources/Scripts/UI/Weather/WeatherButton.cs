@@ -50,6 +50,7 @@ public class WeatherButton : MonoBehaviour {
 		panel = (Image) Instantiate(weather_panel_prefab);
 		panel.transform.SetParent(canvas_parent.transform, true);
 		panel.name= "weather_panel_obj_" + counter;
+		panel.rectTransform.localScale = new Vector3 (1, 1, 1);
 		panel_obj = GameObject.Find ("weather_panel_obj_" + counter);
 		counter++;
 		PlayPanelAnimator ();
