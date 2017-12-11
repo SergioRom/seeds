@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class Next : MonoBehaviour {
 
-	//Asiga la estacion al texto
-	public Text season_txt, time_txt;
+
 	//Botón del tiempo
 	public Button weather_btn;
 	//Imágenes y texto del panel del tiempo
-	public Image current_weather_img, next_weather_img;
-	public Text c_weather_text, temp_text;
 	public GameObject fakeleaf_obj;
 	public Button cut, irr, fer, plant;
 	bool gameover = false;
@@ -23,9 +20,7 @@ public class Next : MonoBehaviour {
 	void Start(){
 		lifetoloss = 0;
 		noirrigate = 1;
-		season_text ();
-		week_count();
-		current_weather_text();
+
 		temperature ();
 
 		//wheather ();
@@ -34,6 +29,9 @@ public class Next : MonoBehaviour {
 	//Boton "Siguiente"
 	public void NextTurn(){
 		if (gameover == false) {
+			Debug.Log (Gameplay_Stats.leafloss);
+
+
 			//Aumenta la semana
 			Gameplay_Stats.week++;
 //			Debug.Log ("Semana: "+Gameplay_Stats.week);
@@ -47,11 +45,12 @@ public class Next : MonoBehaviour {
 			//Background
 			change_season_image ();
 			//Cantidad de semanas
-			week_count();
 			temperature ();
 			flower_sprites ();
 			actions_sprites ();
 			fertilize ();
+
+
 		}
 	}
 
@@ -66,7 +65,6 @@ public class Next : MonoBehaviour {
 				Gameplay_Stats.season = 0;
 			}
 			//Cambia el texto de la estación
-			season_text();
 
 			leafsprite ();
 
@@ -74,6 +72,25 @@ public class Next : MonoBehaviour {
 			Gameplay_Stats.flowerscount = 0;
 			Gameplay_Stats.fercount = 0;
 			Debug.Log ("Estación: "+ Gameplay_Stats.season);
+
+			GameObject hojas_fondo = GameObject.Find ("hojas_falsas");
+			if (Gameplay_Stats.season == 0 || Gameplay_Stats.season == 1) {
+				if (Gameplay_Stats.leafloss <= 35) {
+					hojas_fondo.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/copaFinal") [0] as Sprite;
+				} else if (Gameplay_Stats.leafloss <= 70) {
+					hojas_fondo.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/copaFinal") [1] as Sprite;
+				} else if (Gameplay_Stats.leafloss <= 300) {
+					hojas_fondo.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/copaFinal") [2] as Sprite;
+				}
+			} else if (Gameplay_Stats.season == 2 || Gameplay_Stats.season == 3) {
+				if (Gameplay_Stats.leafloss <= 35) {
+					hojas_fondo.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/copaFinal") [3] as Sprite;
+				} else if (Gameplay_Stats.leafloss <= 70) {
+					hojas_fondo.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/copaFinal") [4] as Sprite;
+				} else if (Gameplay_Stats.leafloss <= 300) {
+					hojas_fondo.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/copaFinal") [5] as Sprite;
+				}
+			}
 		}
 		//Cambiar el sprite del fondo
 		if (Gameplay_Stats.weather_1 == 4 || Gameplay_Stats.weather_1 == 5) {
@@ -81,35 +98,6 @@ public class Next : MonoBehaviour {
 		} else {
 			bg.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite>("Sprites/Background") [Gameplay_Stats.season] as Sprite;
 		}
-	}
-	void season_text(){
-		//Cambia el texto de la estación
-	//	activate_menu(0);
-		/*season_txt = GameObject.Find ("season").GetComponent<Text>();
-		switch (Gameplay_Stats.season) {
-		case 0:
-			Gameplay_Stats.leafloss = 0;
-			Gameplay_Stats.cutcount = 0;
-			season_txt.text = "Estación: Primavera";
-			break;
-		case 1:
-			season_txt.text = "Estación: Verano";
-			break;
-		case 2:
-			season_txt.text = "Estación: Otoño";
-			break;
-		case 3:
-			season_txt.text = "Estación: Invierno";
-			break;
-		}*/
-		//deactivate_menu(0);
-	}
-	void week_count(){
-		//Cambia el texto de la cueunta de quincenas
-		//activate_menu(0);
-		/*time_txt = GameObject.Find ("timecount").GetComponent<Text>();
-		time_txt.text = "Semana: "+ Gameplay_Stats.week;*/
-		//deactivate_menu(0);
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,9 +138,6 @@ public class Next : MonoBehaviour {
 		//current_weather_img.GetComponent<Image> ().sprite =  Resources.LoadAll<Sprite>("Sprites/UI/weather_btn") [Gameplay_Stats.weather_1] as Sprite;
 		//next_weather_img.GetComponent<Image> ().sprite =  Resources.LoadAll<Sprite>("Sprites/UI/weather_btn") [Gameplay_Stats.weather_2] as Sprite;
 
-		//Cambiar texto del panel
-		current_weather_text();
-
 		//Cambiar animación
 		leafanim();
 
@@ -166,29 +151,6 @@ public class Next : MonoBehaviour {
 
 	}
 
-	//Cambiar texto del panel
-	void current_weather_text(){
-		/*switch (Gameplay_Stats.weather_1) {
-		case 0:
-			c_weather_text.text = "Soleado";
-			break;
-		case 1:
-			c_weather_text.text = "Medio nublado";
-			break;
-		case 2:
-			c_weather_text.text = "Nublado";
-			break;
-		case 3:
-			c_weather_text.text = "Viento";
-			break;
-		case 4:
-			c_weather_text.text = "Lluvioso";
-			break;
-		case 5:
-			c_weather_text.text = "Tormenta";
-			break;
-		}*/
-	}
 
 	void temperature(){
 		//La temperatura (centigrados)
@@ -235,7 +197,6 @@ public class Next : MonoBehaviour {
 			Gameplay_Stats.temp += Gameplay_Stats.season + 1;
 		}
 
-		//temp_text.text =  Gameplay_Stats.temp +"°C";
 		//Debug.Log ("Temperatura del dia:" + Gameplay_Stats.temp);
 		Generation.temp_next = Random.Range (1, int.MaxValue-1);
 		Random.InitState (Generation.temp_next);
@@ -268,7 +229,7 @@ public class Next : MonoBehaviour {
 	void lifeloss() {
 
 		bool ActiveRain_1 = false;
-		bool ActiveRain_2 = false;
+		//bool ActiveRain_2 = false;
 		lifelossfunc ();
 		if (Gameplay_Stats.weather_1 == 4 || Gameplay_Stats.weather_1 == 5) {
 			ActiveRain_1 = true;
@@ -342,29 +303,14 @@ public class Next : MonoBehaviour {
 		}
 		damaged = false;
 
-
-	/*	if (Gameplay_Stats.weather_1 == 4 || Gameplay_Stats.weather_1 == 5 || Irrigate.ActiveIrrigation == true) {
-
-		} else {
-			Gameplay_Stats.irrigatecount = 0;
-			Debug.Log ("Veces regado: " + Gameplay_Stats.irrigatecount);
-		}*/
-		/*else if (ActiveRain_2 == true && Irrigate.ActiveIrrigation == true) {
-			Gameplay_Stats.current_life -= lifetoloss;
-			leaf_death ();
-		}
-
-		else if (ActiveRain_1 == true && ActiveRain_2 == true) {
-			Gameplay_Stats.current_life -= lifetoloss;
-			leaf_death ();
-		}
-		*/
 		Irrigate.ActiveIrrigation = false;
 		Irrigate.AI2 = false;
 		if (Gameplay_Stats.current_life <= 0) {
 			gameover = true;
 			Gameplay_Stats.current_life = 0;
 			GameObject leaftodie;
+			GameObject conjunto_de_hojas_falsas = GameObject.Find ("hojas_falsas");
+			Destroy (conjunto_de_hojas_falsas);
 			for(i = 0; i < Generation.total_leaf; i++){
 				leaftodie = GameObject.Find("leaf_c_"+i);
 				leaftodie.GetComponent<SpriteRenderer> ().color = new Color(0,0,255,0);
@@ -374,7 +320,7 @@ public class Next : MonoBehaviour {
 			}
 			go_1.Play ("game_over1");
 			go_2.Play ("game_over2");
-		texto_go.Play("go_text");
+			texto_go.Play("go_text");
 			GameObject menus_death;
 			menus_death = GameObject.Find ("menus_obj");
 			Destroy (menus_death);
@@ -565,7 +511,6 @@ public class Next : MonoBehaviour {
 				}
 
 				leaf_death_autumn (i);
-				leaf_death_autumn (i);
 
 				break;
 			case 3:
@@ -591,7 +536,7 @@ public class Next : MonoBehaviour {
 
 	//Hojas cayendo
 	void leaf_death(){
-		GameObject leaftodie, leaftodie_child;
+		GameObject leaftodie;//, leaftodie_child;
 		//El numero total de hojas es 269 (por ahora)
 		//Se escojera una hoja al azar en entre el 0 y el total de hojas
 		leaftodie = GameObject.Find("leaf_c_"+Generation.leaftodie_next%Generation.total_leaf);
@@ -614,7 +559,7 @@ public class Next : MonoBehaviour {
 
 		GameObject leaftodie;
 		//for(i = 0; i < Generation.total_leaf; i++){
-		if(Generation.leaftodie_next%2==0){
+		if(Generation.leaftodie_next%4==0){
 			leaftodie = GameObject.Find("leaf_c_"+i);
 			leaftodie.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/leaf") [79] as Sprite;
 			GameObject newLeaf = Instantiate (fakeleaf_obj);
@@ -628,23 +573,6 @@ public class Next : MonoBehaviour {
 		Generation.leaftodie_next = Random.Range (1, int.MaxValue-1);
 		Random.InitState (Generation.leaftodie_next);
 
-
-	/*	GameObject leaftodie, leaftodie_child;
-		//El numero total de hojas es 269 (por ahora)
-		//Se escojera una hoja al azar en entre el 0 y el total de hojas
-	//	for(int i = 0; i < Generation.total_leaf; i++){
-	//	if(Generation.leaftodie_next % 2 == 0){
-				leaftodie = GameObject.Find("leaf_c_"+Generation.leaftodie_next%Generation.total_leaf);
-				//Hace la hoja hijo (la del sprite) invisible
-				leaftodie.GetComponent<SpriteRenderer> ().sprite = Resources.LoadAll<Sprite> ("Sprites/leaf") [79] as Sprite;
-				GameObject newLeaf = Instantiate (fakeleaf_obj);
-				newLeaf.name = "leaf_to_die";
-				newLeaf.transform.position = leaftodie.transform.position;
-				Gameplay_Stats.leafloss++;
-		//	}
-		Generation.leaftodie_next = Random.Range (1, int.MaxValue-1);
-		Random.InitState (Generation.leaftodie_next);
-	//	}*/
 
 	}
 

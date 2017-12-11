@@ -6,14 +6,14 @@ public class Notebook_btn : MonoBehaviour {
 	
 	private Animator notebook_anim;
 	private bool SetNotebook;
-	private RectTransform background_notebook;
+	//private RectTransform background_notebook;
 
 	public void IONotebook(){
 		GameObject libreta = GameObject.Find ("notebook");
 		notebook_anim = libreta.GetComponent<Animator> ();
 
 
-		background_notebook = GetComponent<RectTransform> ();
+		//background_notebook = GetComponent<RectTransform> ();
 
 		if (SetNotebook == false) {
 			notebook_anim.Play ("notebook_in");

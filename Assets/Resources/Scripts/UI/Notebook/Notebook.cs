@@ -10,12 +10,24 @@ public class Notebook : MonoBehaviour {
 	string message, title_string;
 
 	static int num=1;
-	public void text(int valor){
-		num = num + valor;
+
+
+	public void menos(){
+		num -= 1;
+		text ();
+	}
+
+	public void mas(){
+		num += 1;
+		text ();
+	}
+
+
+	private void text(){
 		if (num <= 0) {
 			num = 1;
 		}
-		if (num >= 25) {
+		if (num > 25) {
 			num = 25;
 		}
 		Debug.Log ("Página: " + num);

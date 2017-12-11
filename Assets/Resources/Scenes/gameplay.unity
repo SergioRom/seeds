@@ -3821,13 +3821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81012b544586b9d4785f38db77c0a607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  season_txt: {fileID: 0}
-  time_txt: {fileID: 0}
   weather_btn: {fileID: 294810290}
-  current_weather_img: {fileID: 0}
-  next_weather_img: {fileID: 0}
-  c_weather_text: {fileID: 0}
-  temp_text: {fileID: 0}
   fakeleaf_obj: {fileID: 1759385016730768, guid: 05108f9ab9ef71e43a2245653436d746,
     type: 2}
   cut: {fileID: 567905420}
@@ -4058,6 +4052,7 @@ Transform:
   m_Children:
   - {fileID: 974951574}
   - {fileID: 1907512554}
+  - {fileID: 1850152651}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4416,7 +4411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &332356453
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4754,6 +4749,7 @@ GameObject:
   - component: {fileID: 423601686}
   - component: {fileID: 423601685}
   - component: {fileID: 423601684}
+  - component: {fileID: 423601687}
   m_Layer: 5
   m_Name: continue_btn
   m_TagString: Untagged
@@ -4819,7 +4815,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 423601687}
         m_MethodName: continue_newgame
         m_Mode: 1
         m_Arguments:
@@ -4865,6 +4861,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 423601682}
+--- !u!114 &423601687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 423601682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3a856bed8c9ca449c9e5e30c1158c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &535512876
 Prefab:
   m_ObjectHideFlags: 0
@@ -5085,8 +5092,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 631732506}
   - {fileID: 2127029110}
+  - {fileID: 631732506}
   - {fileID: 423601683}
   m_Father: {fileID: 1205796122}
   m_RootOrder: 3
@@ -5264,7 +5271,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 597730522}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6980,6 +6987,77 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1850152650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1850152651}
+  - component: {fileID: 1850152652}
+  m_Layer: 0
+  m_Name: hojas_falsas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1850152651
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850152650}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.09, y: 0.88, z: 5.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 222653460}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1850152652
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850152650}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e4a27603b4e6f16429c6b986e6469f0e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.07, y: 2.4}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1870468445
 GameObject:
   m_ObjectHideFlags: 0
@@ -7141,7 +7219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b0cd6bc58207c47a7a25838063082e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  total_leaf_to_spawn: 270
+  total_leaf_to_spawn: 170
   leafToSpawn: {fileID: 1757933121792514, guid: 6122c5ceb41049a459e15cd0abe44545,
     type: 2}
 --- !u!1 &1994691214
@@ -7212,7 +7290,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.8, y: 7.2}
+  m_Size: {x: 4.8099995, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -7467,12 +7545,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 597730522}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -198}
-  m_SizeDelta: {x: 576, y: 611}
+  m_AnchoredPosition: {x: 0, y: -138.4}
+  m_SizeDelta: {x: 576, y: 492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127029111
 MonoBehaviour:
@@ -7500,7 +7578,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
@@ -7538,9 +7616,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2127029109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b3c4233fbef8d842bddc834fb55bdf2, type: 3}
+  m_Script: {fileID: 11500000, guid: 274207a3bd4057a46adc6c3824cbe233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main_text: {fileID: 2127029111}
 --- !u!1 &2136827667
 GameObject:
   m_ObjectHideFlags: 0
